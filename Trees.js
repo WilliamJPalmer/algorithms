@@ -7,7 +7,7 @@
 function BSTNode(value){
   this.val = value;
   this.right = null;
-  this.left = null;ø
+  this.left = null;
 }
 
 function BST(){
@@ -24,7 +24,7 @@ function BST(){
     while(current){
       if(current.val > val){
         if(current.left == null){
-          current.left = new BDTNode();
+          current.left = newNode;
           return this;
         }else{
           current = current.left
@@ -32,7 +32,7 @@ function BST(){
       }
       else{
         if(current.right == null){
-          current.right = new BSTNode();
+          current.right = newNode;
           return this;
         }else{
           current = current.right;
@@ -195,3 +195,57 @@ function BSTPreOrder(BST){
     helperRight(this.root);
   }
 }
+
+//-----------BST ALTERNATE------------
+class BinarySearchTree{
+  constructor(){
+    this.root = null;
+  }
+  insertNode(val){
+    var node = {
+      data: null,
+      left: null,
+      right: null
+    };
+
+    var currentNode;
+    if (!this.root){
+      this.root = node;
+    } else {
+      currentNode = this.root;
+      while (currentNode){
+        if (val < currentNode.data){
+          if (!currentNode.left){
+            currentNode.left = node;
+            break
+          } else {
+            currentNode = currentNode.left;
+          }
+        } else if (val > currentNode.data){
+          if (!currentNode.right){
+            currentNode.right = node;
+            break;
+          } else {
+            currentNode = currentNode.right;
+          }
+        } else {
+          console.log('Ignore this value as BST should only have unique values');
+          break;
+        }
+      }
+    }
+  }
+}
+var BST = new BinarySearchTree();
+BST.insertNode(5);
+BST.insertNode(8);
+BST.insertNode(2);
+BST.insertNode(13);
+BST.insertNode(7);
+BST.insertNode(3);
+BST.insertNode(23);
+BST.insertNode(15);
+BST.insertNode(25);
+BST.insertNode(9);
+BST.insertNode(19);
+console.log(BST);
