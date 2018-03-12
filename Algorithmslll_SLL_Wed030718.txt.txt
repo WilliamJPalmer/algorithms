@@ -1,0 +1,117 @@
+function Node(value) {
+    this.val = value;
+    this.next = null;
+}
+
+function SLL() {
+    this.head = null;
+}
+
+var node1 = new Node(1);
+var node2 = new Node(2);
+var node3 = new Node(3);
+var node4 = new Node(4);
+var node5 = new Node(5);
+
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node5;
+
+
+var list = new SLL();
+list.head = node1;
+
+/*
+LENGTH. Create a function that accepts a pointer tot he first list node and return number of nodes in SLL.
+*/
+function length(list){
+	var leng = 0;
+	if(!list){
+		return null;
+	}
+	if(!list.head){
+		return leng;
+	}
+	var current = list.head;
+	while(current){
+		leng ++;
+		current = current.next;
+	}
+	return leng;
+}
+console.log(length(list));
+
+/*
+AVERAGE. Create a standalone function average(node) that returns average of all values in list.
+*/
+function average(list){
+	if(!list){
+		return null;
+	}
+	var sum = 0;
+	var leng = 0;
+	var current = list.head;
+	while(current){
+		leng++;
+		sum += current.val;
+		current = current.next;
+	}
+	return sum/leng;
+}
+console.log(average(list));
+
+/*
+MIN. Create a function min() that returns smallest value in list.
+*/
+function min(list){
+	if(!list){
+		return null;
+	}
+	var min = list.head.val;
+	var current = list.head;
+	while(current){
+		if (current.val < min){
+			min = current.val;
+		}
+		current = current.next;
+	}
+	return min;
+}
+console.log(min(list));
+
+/*
+MAX. Create a function min() that returns largest value in list.
+*/
+function max(list){
+	if(!list){
+		return null;
+	}
+	var max = list.head.val;
+	var current = list.head;
+	while(current){
+		if (current.val > max){
+			max = current.val;
+		}
+		current = current.next;
+	}
+	return max;
+}
+console.log(max(list));
+
+/*
+DISPLAY. Create display(node) for debugging that returns a string containing all list values
+*/
+function display(list){
+	if(!list){
+		return null;
+	}
+	var display = “”;
+	var current = list.head;
+	while(current){
+		display += current.val;
+		current=current.next;
+	}
+	return display;
+}
+console.log(display(list));

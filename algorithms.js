@@ -417,7 +417,7 @@
 // //     }
 // //     var list= new SLL();
 // //     list.head = temp;
-// //     retrurn list.head;
+// //     return list.head;
 // //   }
 // // }
 // // var list = new SLL()

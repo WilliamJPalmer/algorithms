@@ -1,0 +1,80 @@
+function Node(value) {
+    this.val = value;
+    this.next = null;
+}
+
+function SLL() {
+    this.head = null;
+}
+
+var node1 = new Node(1);
+var node2 = new Node(2);
+var node3 = new Node(3);
+var node4 = new Node(4);
+var node5 = new Node(5);
+
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node5;
+
+
+var list = new SLL();
+list.head = node1;
+
+/*
+ADD TO FRONT. Given a pointer to the first node in a list and a value, create new node, connect it to the head of the list and returns pointer to the list’s new head node
+*/
+function addToFront(node, value){
+	var newNode = new Node(value);
+	newNode.next = node;
+	return newNode;
+}
+console.log(node1, 6);
+
+/*
+REMOVE FRONT. Given a pointer to the first node in a list, remove the head node and return the new list. If empty, return null
+*/
+function removeFront(node){
+	if(!node.next) {
+		console.log('Null found here');
+		return null;
+	}
+	var newHead = node.next;
+	console.log('newHead is ' + newHead.val + ' ' + newHead.next);
+	node.next = newHead;
+}
+console.log(removeFront(node2));
+
+/*
+FRONT VALUE. Return the value at the head is the list. If empty, return null.
+*/
+function frontValue(node){
+	if(!node){
+		return null;
+	}
+	return node.val;
+}
+console.log(frontValue(node3));
+console.log(frontValue());
+
+/*
+CONTAINS. Given pointer to a listNode and value, return whether value is found in a node in list
+*/
+function contains(node, value){
+	var current = node;
+	while(current){
+		if(current.val === value){
+			return true;
+		}
+		else {
+			current = current.next;
+		}
+	}
+	return false;
+}
+console.log(contains(node1, 3));
+console.log(contains(node1, 2));
+console.log(contains(node1, 7));
+console.log(contains(node1, 99));
+console.log(contains(node1, 5));

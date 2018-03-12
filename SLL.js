@@ -26,7 +26,7 @@ function SLL(){
     var node = new Node(val);
     //check whether my list is empty, i.e this.head == null
     if (!this.head){
-      this.head=node:
+      this.head=node;
       return this; //the return allows you to chain methods together.
     }
     //if there are already nodes in the list, do soemthing else
@@ -78,7 +78,7 @@ function SLL(){
   //     return False;
   //   }
   //   var max= this.head.val;
-  //   var currnet = this.head;
+  //   var current = this.head;
   //   while(current){
   //     if(current.val > max){
   //       max = current.val;
