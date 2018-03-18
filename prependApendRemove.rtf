@@ -1,0 +1,135 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+{\info
+{\author William Palmer}
+{\*\copyright William Palmer}}\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 function sList(node)\{\
+    this.next = node;\
+  \}\
+  \
+  function node(val)\{\
+    this.next = null;\
+    this.value = val;\
+  \}\
+\
+\
+function prependVal(list, val, afterVal)\{\
+    var current = list;\
+    newNode = new node(val);\
+    while(current.next)\{\
+      if(current.next.value === afterVal)\{\
+        var temp = current.next;\
+        current.next = newNode;\
+        current.next.next = temp;\
+        break;\
+      \}\
+      current = current.next;\
+    \}\
+    return list;\
+  \}\
+  \
+  node1 = new node(1);\
+  node2 = new node(2);\
+  node3 = new node(3);\
+  node4 = new node(4);\
+  node5 = new node(5);\
+  node1.next = node2;\
+  node2.next = node3;\
+  node3.next = node4;\
+  node4.next = node5;\
+  list = new sList(node3);\
+  \
+  console.log(prependVal(list, 2.5, 2));\
+  console.log("=====================================");\
+\
+  </script>\
+\
+\
+<script>\
+\
+\
+function sList(node)\{\
+    this.next = node;\
+  \}\
+  \
+  function node(val)\{\
+    this.next = null;\
+    this.value = val;\
+  \}\
+\
+\
+  function removeVal(list, val)\{\
+    var current = list;\
+    while(current.next)\{\
+      if(current.next.value === val)\{\
+        current.next = current.next.next;  \
+      \}\
+      current = current.next; \
+    \}\
+    return list;\
+  \}\
+  \
+  node1 = new node(1);\
+  node2 = new node(2);\
+  node3 = new node(3);\
+  node4 = new node(4);\
+  node5 = new node(5);\
+  node1.next = node2;\
+  node2.next = node3;\
+  node3.next = node4;\
+  node4.next = node5;\
+  list = new sList(node4);\
+  \
+  console.log(removeVal(list, 3));\
+  console.log("=====================================");\
+  \
+</script>\
+\
+<script>\
+\
+\
+function sList(node)\{\
+    this.next = node;\
+  \}\
+  \
+  function node(val)\{\
+    this.next = null;\
+    this.value = val;\
+  \}\
+\
+\
+  function appendVal(list, val, beforeVal)\{\
+    var current = list;\
+    var newNode = new node(val);\
+    while(current.next)\{\
+      if(current.next.value === beforeVal)\{\
+        var temp = current.next.next;\
+        current.next.next = newNode;\
+        newNode.next = temp;\
+        break;\
+      \}\
+      current = current.next;    \
+    \}\
+    return list;\
+  \}\
+  \
+  node1 = new node(1);\
+  node2 = new node(2);\
+  node3 = new node(3);\
+  node4 = new node(4);\
+  node5 = new node(5);\
+  node1.next = node2;\
+  node2.next = node3;\
+  node3.next = node4;\
+  node4.next = node5;\
+  list = new sList(node5);\
+  \
+  console.log(appendVal(list, 3.5, 3));\
+  console.log("=====================================");\
+}

@@ -1,0 +1,145 @@
+function dlNode (value){
+  if(!(this instanceof dlNode)){
+    return new dlNode(value);
+  }
+  this.val = value;
+  this.next = null;
+  this.prev = null;
+}
+
+function dList(){
+  if(!(this instanceof dList)){
+    return new dList();
+  }
+  this.head = null;
+  this.tail = null;
+}
+var node1 = new dlNode(13);
+var node2 = new dlNode(25);
+var node3 = new dlNode(34);
+var node4 = new dlNode(67);
+var node5 = new dlNode(15);
+
+node1.next = node2;
+node1.prev = null;
+node2.next = node3;
+node2.prev = node1;
+node3.next = node4;
+node3.prev = node2;
+node4.next = node5;
+node4.prev = node3;
+node5.next = null;
+node5.prev = node4;
+
+
+var newList = new dList();
+newList.head = node1;
+newList.tail = node5;
+/*
+REPAIR. function that foxes errors found by isValid and breaks loops.
+*/
+function repair(list){
+  if(list){
+    debugger;
+    if(list.tail.next !== null){
+      list.tail.next = null;
+    } else if (list.head.prev !== null) {
+      list.head.prev = null;
+    }
+    else {
+      var walker = list.head;
+      var runner = list.head;
+      while (runner.next){
+        walker = walker.next;
+        runner = runner.next.next;
+        if(walker === runner){
+          var fromEnd = list.tail;
+          while(fromeEnd.prev){
+            if(fromEnd.prev !== walker){
+              fromEnd = fromEnd.prev;
+            } else {
+              walker.next = fromEnd;
+              return list;
+            }
+          }
+        }
+      }
+    }
+  }
+  return newList;
+}
+repair(newList);
+/*
+APPEND. Given
+*/
+function append(list, newVal, findVal){
+  if(list){
+    var current = list.head;
+    while (current){
+      if(current.val === findVal){
+        if(current === list.tail){
+          var appendNode = new dlNode(newVal);
+          appendNode.prev = current;
+          current.prev = appendNode;
+          return newList;
+        } else {
+          var before = current.prev;
+          var appendNode = new dlNode(newVal);
+          before.next = appendNode;
+          appendNode.prev = current;
+          appendNode.next = current.next;
+          current.next.prev = appendNode;
+          return newList;
+        }
+      }
+      current = current.next
+    }
+  }
+  return false;
+};
+
+append(newList, 9, 67);
+/*
+DELETE MIDDLE NODE. Given a node in the middle of a DLL, remove it
+*/
+function deleteMiddleNode(list){
+  if(!list){
+    return false;
+  }
+  var first = list.head;
+  var last = list.tail;
+  while(first.next && last.prev){
+    if(first.next === last.prev){
+      first.next = last;
+      last.prev = first;
+    }
+    first = first.next;
+    last = last.prev;
+    if (first === list.tail && last === list.head){
+      return newList;
+    }
+  }
+}
+deleteMiddleNode(newList);
+
+/*
+REVERSE. create a function to reverse nodes in a DLL.
+*/
+function reverse(list){
+  var head = list.head;
+  var current = list.head;
+  var tmp;
+  while(current){
+    tmp = current.next;
+    current.next = current.prev;
+    current.prev = tmp;
+    if(!tmp){
+     //set the last node as header
+     list.head = current;
+    }
+    current = tmp;
+  }
+  return list;
+}
+
+reverse(newList);

@@ -1,0 +1,210 @@
+function dlNode (value){
+  if(!(this instanceof dlNode)){
+    return new dlNode(value);
+  }
+  this.val = value;
+  this.next = null;
+  this.prev = null;
+}
+
+function dList(){
+  if(!(this instanceof dList)){
+    return new dList();
+  }
+  this.head = null;
+  this.tail = null;
+}
+var node1 = new dlNode(13);
+var node2 = new dlNode(25);
+var node3 = new dlNode(34);
+var node4 = new dlNode(67);
+var node5 = new dlNode(15);
+
+node1.next = node2;
+node1.prev = null;
+node2.next = node3;
+node2.prev = node1;
+node3.next = node4;
+node3.prev = node2;
+node4.next = node5;
+node4.prev = node3;
+node5.next = null;
+node5.prev = node4;
+
+
+var newList = new dList();
+newList.head = node1;
+newList.tail = node5;
+
+/*
+PREPEND. Given dList, new value and existing value, insert new val in dList immediately before existing val
+*/
+function prepend(list, addVal, findVal){
+  if(list){
+    var current = list.head;
+    while(current){
+      if (current.val === findVal){
+        if(current === list.head){
+          var after = current;
+          var insertNode = new dlNode(addVal);
+          after.prev = insertNode;
+          insertNode.next= after;
+          list.head = insertNode;
+        } else {
+          var before = current.prev;
+          var after = current;
+          var insertNode = new dlNode(addVal);
+          before.next = insertNode;
+          after.prev = insertNode;
+          insertNode.next = after;
+          insertNode.prev = before;
+          return newList;
+        }
+      }
+      current = current.next;
+    };
+  };
+  return false;
+};
+
+prepend(newList, 9, 67);
+prepend(newList, 200, 13);
+
+/*
+Kth TO LAST VALUE. Given K, return value ‘k’ from dList’s end. Number of nodes from last node.
+*/
+function kToLast(list, k){
+  if(!list){
+  };
+  var current = list.tail;
+  for (i = 0; i < k; i++){
+    current = current.prev;
+  }
+  return current.val;
+};
+
+kToLast(newList, 3);
+
+/*
+IS VALID DLIST. Determine whether given dList is well-formed and valid, whether next and prev pointers match
+*/
+//function isValid(list){
+//	var current = list.head;
+//	while (current){
+//		if(current.next == null && current.prev == null){
+//			return true;
+//		}
+	
+
+
+
+
+
+
+/*
+PALINDROME. 
+*/
+function palindrome(list){
+  if(!list){
+    return false;
+  }
+  if(list.head.val != list.tail.val){
+    return false;
+  }
+  var headStart = this.head;
+  var tailStart = this.tail;
+  while (headStart !== tailStart){
+    headStart = headStart.next;
+    tailStart = tailStart.prev;
+    if( headStart.val != tailStart.val){
+      return false;
+    }
+    if(headStart.prev === tailStart){
+      break;
+    }
+  }
+  return true;
+
+  console.log(list);
+};
+var newList2 = new dList();
+
+var node_a = new dlNode(10);
+var node_b = new dlNode(16);
+var node_c = new dlNode(52);
+var node_d = new dlNode(16);
+var node_e = new dlNode(10);
+
+node_a.next = node_b;
+node_a.prev = null;
+node_b.next = node_c;
+node_b.prev = node_a;
+node_c.next = node_d;
+node_c.prev = node_b;
+node_d.next = node_e;
+node_d.prev = node_c;
+node_e.next = null;
+node_e.prev = node_d;
+
+newList2.head = node_a;
+palindrome(newList2);
+
+/*
+LOOP START. Given a dList that may contain a loop, return pointer to the node where the loop begins or returns null if no loop.
+*/
+function dlNode (value){
+  if(!(this instanceof dlNode)){
+    return new dlNode(value);
+  }
+  this.val = value;
+  this.next = null;
+  this.prev = null;
+}
+
+function dList(){
+  if(!(this instanceof dList)){
+    return new dList();
+  }
+  this.head = null;
+  this.tail = null;
+}
+var node1 = new dlNode(13);
+var node2 = new dlNode(25);
+var node3 = new dlNode(34);
+var node4 = new dlNode(67);
+var node5 = new dlNode(15);
+
+node1.next = node2;
+node1.prev = null;
+node2.next = node3;
+node2.prev = node1;
+node3.next = node4; //node3.next = node1;
+node3.prev = node2;
+node4.next = node5;
+node4.prev = node3;
+node5.next = null;
+node5.prev = node4;
+
+
+var newList = new dList();
+newList.head = node1;
+newList.tail = node5;
+
+function isLoop(list){
+  if(!list){
+    return false;
+  };
+  var current = list.head;
+  while(current.next){
+    before = current;
+    if (current.next.visited){
+      return before.val + " -- Loop starts here";
+    }
+    current=current.next;
+    before.visited = true;
+    before = current.next;
+  }
+  return null + " -- No loop found in dList";
+};
+
+isLoop(newList);

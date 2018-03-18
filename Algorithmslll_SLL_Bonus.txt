@@ -1,0 +1,81 @@
+// ~~~ removeVal ~~~
+//Create removeVal(list,value) that removes from our list the node with the given value. Return the new list.
+//
+// function removeVal(sll, val){
+//     if(!sll.head){
+//         return console.log(sll);
+//     }
+//     var cur = sll.head;
+//     while(cur){
+//         if(cur.val === val){
+//             if(!cur.next){
+//                 cur.next = null;
+//                 return console.log(sll);
+//             }
+//             else{
+//                 cur.next = cur.next.next;
+//                 return console.log(sll);
+//             }
+//         }
+//         cur = cur.next;
+//     }
+//     return console.log(sll);
+// }
+// removeVal(snake, 15)
+
+// ~~~ prependVal ~~
+//Create prependVal(list,value,before) that inserts a new node with given value immediately before the node with before (or at end). Return the new list. 
+//
+// function prepenval(sll, value, before){
+//     var xnode = new node(value);
+//     if(!sll.head){
+//         sll.head = xnode;
+//         return console.log(sll);
+//     }
+//     var pre = sll.head;
+//     var cur = pre.next;
+//     if(pre.val === before){
+//         xnode.next = pre;
+//         sll.head = xnode;
+//         return console.log(sll);
+//     }
+//     while(cur){
+//         if(cur.val === before){
+//             xnode.next = cur;
+//             pre.next = xnode;
+//             return console.log(sll);
+//         }
+//         pre = pre.next;
+//         cur = cur.next;
+//     }
+//     cur.next = xnode;
+//     return console.log(sll);
+// }
+// prepenval(snake, 4, 15);
+
+// ~~~ appendVal ~~~
+//Create appendVal(list,value,after) that inserts a new listNode with given value immediately after the node containing after (or at end). Return the new list. 
+//
+function appendVal(sll, value, after){
+    var xnode = new node(value);
+    if(!sll.head){
+        sll.head = xnode;
+        return console.log(sll);
+    }
+    var cur = sll.head;
+    while(cur){
+        if(cur.val === after){
+            if(!cur.next){
+                cur.next = xnode;
+                return console.log(sll);
+            }
+            xnode.next = cur.next;
+            cur.next = xnode;
+            return console.log(sll);
+        }
+        cur = cur.next;
+    }
+    cur.next = xnode;
+    return console.log(sll);
+}
+appendVal(snake, 19, 8)
