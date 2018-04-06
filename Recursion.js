@@ -11,15 +11,15 @@
 //**********************************
 //**********************************
 
-// function recursionSigma(m){
-//   if(m==1){
-//     return m;
-//   }
-//   else{
-//     return recursionSigma(m-1)+m;
-//   }
-// }
-// recursionSigma(5);
+function recursionSigma(m){
+  if(m==1){
+    return m;
+  }
+  else{
+    return recursionSigma(m-1)+m;
+  }
+}
+recursionSigma(5);
 //
 //
 // function iterateSigma(m){
@@ -33,17 +33,18 @@
 // iterateSigma(6);
 //
 // //--------------------------
-// function fibonacci(n){
-//   if (n ==0 || n == 1){
-//     return n;
-//   }
-//   else if (n < 0){
-//     return 0;
-//   }
-//   else{
-//     return fibonacci(n-1) + fibonacci(n-2)
-//   }
-// }
+function fibonacci(n){
+  if (n ==0 || n == 1){
+    return n;
+  }
+  else if (n < 0){
+    return 0;
+  }
+  else{
+    return fibonacci(n-1) + fibonacci(n-2)
+  }
+}
+fibonacci(4);
 
 // ----------FACTORIAL RECURSION----------
 // the factorial of ZERO is 1.
@@ -64,7 +65,7 @@
 // function rBinStrExp(str){
 //   var curr = "";
 //   var arr = [];
-//   // the parenthesis surrounding the function below, makes the functionan
+//   // the parenthesis surrounding the function below, makes the function an
 //   // immediate function and the return needs to be outside the funciton
 // (function rBSEHelper(str, curr, arr){
 //     if (curr.length == str.length){

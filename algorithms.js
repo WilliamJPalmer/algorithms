@@ -555,7 +555,7 @@
 //   if (half %2 !=0){
 //     return false;
 //   }
-//   for (var 1 = 0;i<arr.length;i++){
+//   for (var i = 0;i<arr.length;i++){
 //     sum2 = sum2 + arr[i];
 //     if (sum2 ==half){
 //       return true;
@@ -565,29 +565,29 @@
 // }
 
 //--------------------- Binary Search of array
-// function binarySearch(arr, x){
-//   var b = 0;
-//   var m = Math.floor(arr.length/2);
-//   var e = arr.length-1;
-//   var balance = false;
-//   while (false){
-//     // if()
-//     if (x > arr[m]){
-//       b = m;
-//       m = Math.floor(e+b/2);
-//     }
-//     else if (x < arr[m]){
-//       e = m;
-//       m = Math.floor(e+b/2);
-//     }
-//     else if (x == arr[m]){
-//       return true;
-//     }
-//   }
-//   // return false;
-//
-// }
-// binarySearch([1,2,3,4,5,6,7,8,9,10,11], 7);
+function binarySearch(arr, x){
+  var b = 0;
+  var m = Math.floor(arr.length/2);
+  var e = arr.length-1;
+  var balance = false;
+  while (false){
+    // if()
+    if (x > arr[m]){
+      b = m;
+      m = Math.floor(e+b/2);
+    }
+    else if (x < arr[m]){
+      e = m;
+      m = Math.floor(e+b/2);
+    }
+    else if (x == arr[m]){
+      return true;
+    }
+  }
+  // return false;
+
+}
+binarySearch([1,2,3,4,5,6,7,8,9,10,11], 7);
 // //---------------------Flatten an array
 // function Flatten (arr){
 //   if(arr == []){

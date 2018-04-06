@@ -11,39 +11,79 @@ function BSTNode(value){
 }
 
 function BST(){
+  console.log("Starting here");
   this.root = null;
+  console.log("Root should eb null");
   this.addNode = function(val){
-    if (!this.root){
-      var newNode = new BSTNode();
-      this.root = newNode;
-      return this;
-    }
-    else{
+    var newNode = new BSTNode(val);
+    debugger;
+    if(this.root){
       var current = this.root;
-    }
-    while(current){
-      if(current.val > val){
-        if(current.left == null){
-          current.left = newNode;
-          return this;
-        }else{
-          current = current.left
+      console.log(current);
+      while(current){
+        if(newNode.val >= current.val){
+          if(current.right){
+            current = current.right;
+          } else {
+            current.right = newNode;
+            return;
+          }
+        } else if (newNode.val < current.val){
+          if(current.left){
+            current = current.left;
+          } else {
+            current.left = newNode;
+            return;
+          }
         }
       }
-      else{
-        if(current.right == null){
-          current.right = newNode;
-          return this;
-        }else{
-          current = current.right;
-        }
-      }
+    } else {
+      this.root = newNode;
+      console.log("this.root being set to newNode");
     }
   }
 }
-var Tree1 = new BST
-console.log(Tree1.addNode(6));
+var newTree = new BST;
+newTree.addNode(10);
+newTree.addNode(20);
+newTree.addNode(80);
+newTree.addNode(7);
+newTree.addNode(17);
+newTree.addNode(14);
+newTree.addNode(3);
+console.log(newTree);
+//     if (!this.root){
+//       var newNode = new BSTNode();
+//       this.root = newNode;
+//       return this;
+//     }
+//     else{
+//       var current = this.root;
+//     }
+//     while(current){
+//       if(current.val > val){
+//         if(current.left == null){
+//           current.left = newNode;
+//           return this;
+//         }else{
+//           current = current.left
+//         }
+//       }
+//       else{
+//         if(current.right == null){
+//           current.right = newNode;
+//           return this;
+//         }else{
+//           current = current.right;
+//         }
+//       }
+//     }
+//   }
+// }
+// var Tree1 = new BST
+// console.log(Tree1.addNode(6));
 // console.log(this.addNode);
+
 
 //--------------BST CONTAINS--------------
 function BSTNode(value){
@@ -150,7 +190,6 @@ function BST(){
         countL++;
         current = current.left
       }
-
     };
     helpRight = function(current, countR){
       var countR = 0;

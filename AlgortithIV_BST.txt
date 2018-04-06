@@ -1,0 +1,170 @@
+/*
+ADD. Create an add(val) method on the bst object to add a new value to the tree. This entails creating a btNode with this value and connecting it at the appropriate place in the tree.
+*/
+
+function BSTNode(value){
+  this.val = value;
+  this.right = null;
+  this.left = null;
+}
+
+function BST(){
+  console.log("Starting here");
+  this.root = null;
+  console.log("Root should eb null");
+  this.addNode = function(val){
+    var newNode = new BSTNode(val);
+    if(this.root){
+      var current = this.root;
+      console.log(current);
+      while(current){
+        if(newNode.val >= current.val){
+          if(current.right){
+            current = current.right;
+          } else {
+            current.right = newNode;
+            return;
+          }
+        } else if (newNode.val < current.val){
+          if(current.left){
+            current = current.left;
+          } else {
+            current.left = newNode;
+            return;
+          }
+        }
+      }
+    } else {
+      this.root = newNode;
+      console.log("this.root being set to newNode");
+    }
+  }
+}
+var newTree = new BST;
+newTree.addNode(10);
+newTree.addNode(20);
+newTree.addNode(80);
+newTree.addNode(7);
+newTree.addNode(17);
+newTree.addNode(14);
+newTree.addNode(3);
+console.log(newTree);
+
+/*
+CONTAINS. Create a contains(val) bst method that returns whether the tree contains a given value. Take advantage of the BST’s structure to make this a much more rapid operation than sList.contains() would be.
+*/
+
+function BSTNode(value){
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+function BST(){
+  this.root = null;
+  this.contains = function(val){
+    if(!this.root){
+      return false;
+    }
+    var current = this.root;
+    while(current){
+      if(val = current.val){
+        return true;
+      }
+      else if (val > current.val){
+        if(current.right = null){
+          return false;
+        }
+        current = current.right;
+      }
+      else {
+        if(current.left = null){
+          return false;
+        }
+        current = current.left
+      }
+    }
+  }
+}
+var newTree2 = new BST;
+newTree2.addNode(10);
+newTree2.addNode(20);
+newTree2.addNode(80);
+newTree2.addNode(7);
+newTree2.addNode(17);
+newTree2.addNode(14);
+newTree2.addNode(3);
+newTree2.contains(7);
+
+/*
+MIN. Create a min() method on the bst class that returns the smallest value found in the BST.
+*/
+
+function BSTNode(value){
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+function BST(){
+  this.root = null;
+  this.Min = function(){
+    if(!this.root){
+      return false;
+    }
+    var current = this.root;
+    var Min = 0;
+    while(current){
+      if(current.left != null){
+        current = current.left;
+      }else{
+        Min = current.val;
+        return Min;
+      }
+    }
+  }
+}
+var newTree3 = new BST;
+newTree3.addNode(10);
+newTree3.addNode(20);
+newTree3.addNode(50);
+newTree3.addNode(7);
+newTree3.addNode(17);
+newTree3.addNode(4);
+newTree3.addNode(31);
+newTree3.min();
+
+/*
+MAX. Create a max() method on the bst class that returns the largest value found in the BST.
+*/
+
+function BSTNode(value){
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+function Max(){
+  this.root = null;
+  this.Max = function(){
+    if(!this.root){
+      return false;
+    }
+    var current = this.root;
+    var Max = 0;
+    while(current){
+      if(current.right != null){
+        current = current.right;
+      }else{
+        Max = current.val;
+        return Max;
+      }
+    }
+  }
+}
+var newTree4 = new BST;
+newTree4.addNode(10);
+newTree4.addNode(20);
+newTree4.addNode(50);
+newTree4.addNode(7);
+newTree4.addNode(17);
+newTree4.addNode(4);
+newTree4.addNode(31);
+newTree4.max();
