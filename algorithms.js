@@ -243,7 +243,7 @@
 // reverseArray();
 //
 // /*-------------------------------------------*/
-// /*Remove blacnkd from a string*/
+// /*Remove blanks from a string*/
 // function removeBlanks(str){
 //   var newstr="";
 //   for (var i=0;i<str.length;i++){
@@ -612,6 +612,18 @@ binarySearch([1,2,3,4,5,6,7,8,9,10,11], 7);
 // Flatten([1,2,3,[4,5],6,[],9]);
 
 //---------------------Remove Duplicates
+function removeDuplicates(arr){
+  for(var i = arr.length-1; i >= 1; i --){
+    if(arr[i] == arr[i -1]){
+      for (var j = i; j<arr.length-1; j++){
+        arr[j] = arr[j+1];
+      }
+      arr.pop();
+    }
+  }
+  console.log(arr);
+}
+removeDuplicates([1,2,2,3,4,5,5,5,6,7]);
 
 //----------------STRING ENCODE----------
 // function stringEncode(str){
