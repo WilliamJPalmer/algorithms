@@ -1,0 +1,259 @@
+<script>
+// William Palmer || william.palmer@me.com=========================
+
+function rSigma(num){
+    // Given a number (num), return the Simga value of num (Sigma is the sum of all numbers from 0 to num).
+    // Use recursion to solve this algorithm.
+    if(num === 0 || num === 1){
+      return num;
+    } else if (num < 0){
+      return 0;
+    } else {
+      return rSigma(num-1) + num;
+    }
+
+}
+// rSigma(5);
+
+// ================================================
+
+function rFibonacci(num){
+    // Given num, return the Fibonacci value of num.
+    // Use recursion to solve this algorithm.
+    if(num == 0 || num == 1){
+      return num;
+    } else if (num < 0){
+      return 0;
+    } else {
+      return rFibonacci(num - 1) + rFibonacci(num - 2);
+    }
+}
+// rFibonacci(4);
+// ================================================
+
+function rBinarySearch(arr, val, b=0, e=arr.length-1){
+    // Given an array (arr) and a value (val), return true if val exists in the array, or false if it does not.
+    // Use recursion to solve this algorithm.
+  var m = Math.floor((b+e) / 2);
+  if((b === e || b === e-1) && arr[m] !== val) {
+	return false;
+  }
+  if(val < arr[b] || val > arr[e]){
+    return false;
+  }
+
+  if(arr[m] === val){
+    return true;
+  } else if (arr[m] < val){
+    return rBinarySearch(arr, val, m, e);
+  } else if (arr[m] > val){
+    return rBinarySearch(arr, val, b, m);
+  } else {
+    return false;
+  }
+}
+rBinarySearch([1,2,3,4,5,6,7], 3);
+
+// ================================================
+
+function btNode(value) {
+    this.val = value;
+    this.left = null;
+    this.right = null;
+}
+
+// ================================================
+
+function bst() {
+    this.root = null;
+    // --------------------------------------------
+
+    this.add = function(val) {
+      //Given a value (val), add a new node with that val in the binary tree.
+      var newNode = new btNode(val);
+      if(this.root){
+        var current = this.root;
+        // console.log(current);
+        while(current){
+          if(newNode.val >= current.val){
+            if(current.right){
+              current = current.right;
+            } else {
+              current.right = newNode;
+              return;
+            }
+          } else if (newNode.val < current.val){
+            if(current.left){
+              current = current.left;
+            } else {
+              current.left = newNode;
+              return;
+            }
+          }
+        }
+      } else {
+        this.root = newNode;
+        // console.log("this.root being set to newNode");
+      }
+    }
+
+    // --------------------------------------------
+
+    this.removeVal = function(val) {
+      //Given a value (val), find the node with the value of val and re-assign it to null.
+      if(!this.root){
+        return false;
+      }
+      var current = this.root;
+      while(current){
+        if (current.val === val){
+          current.val = null;
+        } else if (val < current.val){
+          current = current.left;
+        } else if (val >= current.val){
+          current = current.right;
+        }
+      }
+    }
+
+    // --------------------------------------------
+
+    // this.removeAllVals = function() {
+    //   // Re-assign all values of the binary tree to null.
+    //   if(!this.root){
+    //     return false;
+    //   }
+    //   var current = this.root;
+    //   while(current){
+    //     if (current.left){
+    //       current = current.left;
+    //       if(!current.left){
+    //         current.val = null;
+    //       }
+    //     }
+    //     if (current.right){
+    //       current = current.right;
+    //       if(!current.right){
+    //         current.val = null;
+    //       }
+    //     }
+    //   }
+    // }
+
+    // --------------------------------------------
+
+    this.isValid = function() {
+        // BONUS QUESTION
+        // Return true if the entire binary search tree is valid, or false if it is not.
+
+    }
+
+    // --------------------------------------------
+}
+var newBSTree = new bst;
+newBSTree.add(10);
+newBSTree.add(13);
+newBSTree.add(12);
+newBSTree.add(1);
+newBSTree.add(5);
+newBSTree.add(9);
+newBSTree.add(20);
+newBSTree.add(70);
+newBSTree.removeVal(70);
+newBSTree.removeAllVals();
+
+ // ****************************************************************************************************
+ console.log("@@@@@@@@@@@@@@@ rSigma( 4 ) 10 ===", rSigma(4));
+score = 0;
+if(rSigma(4) === 10) {
+    score++;
+    console.log("Valid rSigma")
+} else {
+    console.log("Invalid rSigma")
+}
+console.log("@@@@@@@@@@@@@@@ rFibonacci( 5 ) 5 ===", rFibonacci(5));
+if(rFibonacci(5) === 5) {
+    score++;
+    console.log("Valid rFibonacci")
+} else {
+    console.log("Invalid rFibonacci")
+}
+console.log("@@@@@@@@@@@@@@@ rBinarySearch( [1,2,3,5,6,8], 7 ) false ===", rBinarySearch([1,2,3,5,6,8], 7))
+console.log("@@@@@@@@@@@@@@@ rBinarySearch( [1,2,3,5,6,8], 8 ) true ===", rBinarySearch([1,2,3,5,6,8], 8))
+if(rBinarySearch([1,2,3,5,6,8], 7) === false && rBinarySearch([1,2,3,5,6,8], 8)) {
+    score++;
+    console.log("Valid rBinarySearch")
+} else {
+    console.log("Invalid rBinarySearch")
+}
+var tree = new bst();
+var node1 = new btNode(1);
+var node2 = new btNode(2);
+var node3 = new btNode(3);
+var node4 = new btNode(4);
+var node5 = new btNode(5);
+var node6 = new btNode(6);
+var node7 = new btNode(7);
+tree.root = node4;
+node4.left = node2
+node4.right = node6
+node2.left = node1;
+node2.right = node3;
+node6.left = node5;
+node6.right = node7;
+tree.add(0);
+console.log("@@@@@@@@@@@@@@@ tree.add(0) 0 ===", tree.root.left.left.left.val);
+if(tree.root.left.left.left.val === 0) {
+    score++;
+    console.log("Valid add")
+} else {
+    console.log("Invalid add")
+}
+console.log("@@@@@@@@@@@@@@@ tree.isValid() true ===", tree.isValid())
+var temp = false;
+if(tree.isValid()) var temp = true;
+tree.root.val = 0;
+console.log("@@@@@@@@@@@@@@@ tree.isValid() false ===", tree.isValid())
+if(tree.isValid() === false && temp) {
+    score++;
+    console.log("Valid isValid")
+} else {
+    console.log("Invalid isValid")
+}
+tree.root.val = 4;
+tree.removeVal(4);
+console.log("@@@@@@@@@@@@@@@ tree.removeVal(4) null ===", tree.root.val)
+if(tree.root.val === null) {
+    score++;
+    console.log("Valid removeVal")
+} else {
+    console.log("Invalid removeVal")
+}
+tree.removeAllVals();
+console.log("@@@@@@@@@@@@@@@ node1.val null ===", node1.val)
+console.log("@@@@@@@@@@@@@@@ node2.val null ===", node2.val)
+console.log("@@@@@@@@@@@@@@@ node3.val null ===", node3.val)
+console.log("@@@@@@@@@@@@@@@ node4.val null ===", node4.val)
+console.log("@@@@@@@@@@@@@@@ node5.val null ===", node5.val)
+console.log("@@@@@@@@@@@@@@@ node6.val null ===", node6.val)
+console.log("@@@@@@@@@@@@@@@ node7.val null ===", node7.val)
+if (
+    node1.val == null &&
+    node2.val == null &&
+    node3.val == null &&
+    node4.val == null &&
+    node5.val == null &&
+    node6.val == null &&
+    node7.val == null
+) {
+    score++;
+    console.log("Valid removeAllVals")
+} else {
+    console.log("Invalid removeAllVals")
+}
+console.log("Score: ", score, " / 7 || Includes Bonus");
+if(score >= 5) console.log("PASS")
+else console.log("fail")
+// ****************************************************************************************************
+
+</script>

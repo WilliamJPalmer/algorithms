@@ -25,7 +25,7 @@ function rFibonacci(num){
     } else if (num < 0){
       return 0;
     } else {
-      return rFibonacci(num - 1) + (num - 2);
+      return rFibonacci(num - 1) + rFibonacci(num - 2);
     }
 }
 rFibonacci(4);
@@ -111,34 +111,34 @@ function bst() {
         } else if (val < current.val){
           current = current.left;
         } else if (val >= current.val){
-          current = current.left;
+          current = current.right;
         }
       }
     }
 
     // --------------------------------------------
 
-    this.removeAllVals = function() {
-      // Re-assign all values of the binary tree to null.
-      if(!this.root){
-        return false;
-      }
-      var current = this.root;
-      while(current){
-        if (current.left){
-          current = current.left;
-          if(!current.left){
-            current.val = null;
-          }
-        }
-        if (current.right){
-          current = current.right;
-          if(!current.right){
-            current.val = null;
-          }
-        }
-      }
-    }
+    // this.removeAllVals = function() {
+    //   // Re-assign all values of the binary tree to null.
+    //   if(!this.root){
+    //     return false;
+    //   }
+    //   var current = this.root;
+    //   while(current){
+    //     if (current.left){
+    //       current = current.left;
+    //       if(!current.left){
+    //         current.val = null;
+    //       }
+    //     }
+    //     if (current.right){
+    //       current = current.right;
+    //       if(!current.right){
+    //         current.val = null;
+    //       }
+    //     }
+    //   }
+    // }
 
     // --------------------------------------------
 
