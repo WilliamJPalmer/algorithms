@@ -1,0 +1,279 @@
+//==========================================
+//================= MONDAY =================
+//==========================================
+function dNode(value) {
+    this.val = value;
+    this.next = null;
+    this.prev = null;
+}
+
+function DLL() {
+    this.head = null;
+    this.tail = null;
+}
+
+var node1 = new Node(1);
+var node2 = new Node(2);
+var node3 = new Node(3);
+var node4 = new Node(4);
+var node5 = new Node(5);
+
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node5;
+node2.prev = node1;
+node3.prev = node2;
+node4.prev = node3;
+node5.prev = node4;
+
+var newList = new DLL();
+list.head = node1;
+list.tail = node5;
+
+//=============== Prepend ===============
+/*
+Given dList, new value, and existing value,
+insert new val into dList immediately before existing val.
+*/
+function prepend(list, addVal, findVal){
+  if(list){
+    var current = list.head;
+    while(current){
+      if (current.val === findVal){
+        if(current === list.head){
+          var after = current;
+          var insertNode = new dlNode(addVal);
+          after.prev = insertNode;
+          insertNode.next= after;
+          list.head = insertNode;
+          return newList;
+        } else {
+          var before = current.prev;
+          var after = current;
+          var insertNode = new dlNode(addVal);
+          before.next = insertNode;
+          after.prev = insertNode;
+          insertNode.next = after;
+          insertNode.prev = before;
+          return newList;
+        }
+      }
+      current = current.next;
+    };
+  };
+  console.log("Mark value not found");
+  return false;
+};
+prepend(newList, 200, 45);
+
+//=============== Kth to Last ===============
+/*
+Given k, return the value ‘k’ from a dList’s end.
+(1)->(2)->(*)->(3) - first to last
+*/
+function kToLast(list, k){
+  if(!list){
+    return false;
+  };
+  var current = list.tail;
+  for (i = 0; i < k; i++){
+    current = current.prev;
+  }
+  return current.val;
+}
+kToLast(newList, 3);
+
+//=============== Is Valid List ===============
+/*
+Determine whether given dList is well-formed and
+valid: whether next and prev pointers match, etc.
+*/
+function isValid(list){
+
+}
+isValid(newList);
+
+//=============== Palindrome ===============
+/*
+Determine whether a dList is a palindrome
+*/
+function isPalindrome(list){
+
+}
+
+
+
+
+//==========================================
+//================ WEDNESDAY ===============
+//==========================================
+
+//=============== Length ===============
+/*
+Create a function that accepts a pointer to first
+list node, and returns number of nodes in sList.
+*/
+function length(list){
+	var leng = 0;
+	if(!list){
+		return null;
+	}
+	if(!list.head){
+		return leng;
+	}
+	var current = list.head;
+	while(current){
+		leng ++;
+		current = current.next;
+	}
+	return leng;
+}
+console.log(length(list));
+
+//=============== Average ===============
+/*
+Create a standalone function average(node) that
+returns (…wait for it … ) the average of all
+values contained in that list.
+*/
+function average(list){
+	if(!list){
+		return null;
+	}
+	var sum = 0;
+	var leng = 0;
+	var current = list.head;
+	while(current){
+		leng++;
+		sum += current.val;
+		current = current.next;
+	}
+	return sum/leng;
+}
+console.log(average(list));
+
+//=============== Min ===============
+/*
+Create function min(node) to return smallest value in the list.
+*/
+function min(list){
+	if(!list){
+		return null;
+	}
+	var min = list.head.val;
+	var current = list.head;
+	while(current){
+		if (current.val < min){
+			min = current.val;
+		}
+		current = current.next;
+	}
+	return min;
+}
+console.log(min(list));
+
+//=============== Max ===============
+/*
+Create function max(node) to return smallest value in the list.
+*/
+function max(list){
+	if(!list){
+		return null;
+	}
+	var max = list.head.val;
+	var current = list.head;
+	while(current){
+		if (current.val > max){
+			max = current.val;
+		}
+		current = current.next;
+	}
+	return max;
+}
+console.log(max(list));
+
+//=============== Display ===============
+/*
+Create display(node) for debugging that returns a
+string containing all list values. Build what you
+wish console.log(myList) did!
+*/
+function display(list){
+	if(!list){
+		return null;
+	}
+	var display = “”;
+	var current = list.head;
+	while(current){
+		display += current.val;
+		current=current.next;
+	}
+	return display;
+}
+console.log(display(list));
+
+//=============== Remove Node ===============
+/*
+Create removeVal(list,value) that removes from our
+list the node with the given value. Return the new list.
+*/
+function removeVal(list.val){
+  var current = list;
+  while(current.next){
+    if(current.next.value === val){
+      current.next = current.next.next;
+    }
+    current = current.next;
+  }
+  return list;
+}
+
+//=============== Prepend Node ===============
+/*
+Create prependVal(list,value,before) that inserts a listNode
+with given value immediately before the node with before(value)
+(or at end). Return the new list.
+(1)->(2)->(3)->(4)
+(list, 99, 4)
+(1)->(2)->(3)->(99)->(4)
+*/
+function prependList(list,val,afterVal){
+  var current = list;
+  newNode = new Node(val);
+  while(current.next){
+    if(current.next.value === afterVal){
+      var temp = current.next;
+      current.next = newNode;
+      current.next.next = temp;
+      break;
+    }
+    current = current.next
+  }
+  return list;
+}
+
+
+//=============== Append Node ===============
+/*
+Create appendVal(list,value,after) that inserts a new listNode
+with given value immediately after the node containing after
+(or at end). Return the new list.
+(1)->(2)->(3)->(4)
+(list, 99, 4)
+(1)->(2)->(3)->(4)->(99)
+*/
+function appendVal(list, val, beforeVal){
+  var current = list;
+  var newNode = new Node(val);
+  while(current.next){
+    if(current.next.value === beforeVal){
+      var temp = current.next.next;
+      current.next.next = newNode;
+      newNode.next = temp;
+      break;
+    }
+    current = current.next;
+  }
+  return list;
+}

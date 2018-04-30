@@ -1,0 +1,339 @@
+<script>
+// ========================================================================================
+// Please enter your information
+user = {
+    first_name: "William",
+    last_name: "Palmer",
+    email: "william.palmer@me.com"
+};
+
+
+// ========================================================================================
+// Given a string (str), return the string in reverse.
+function reverseString(str) {
+  var newStr = "";
+  for(var i=str.length-1;i>-1; i--){
+    newStr += str[i];
+  }
+  str = newStr;
+  return str;
+}
+reverseString("automobile");
+
+
+// ========================================================================================
+// Given a string (str) and a character (char), return a string without the supplied character (char).
+function removeLetter(str, char) {
+  var newStr = "";
+  for (var i = 0; i < str.length; i++){
+    if(str[i] === char){
+      i++;
+      if(i>str.length-1){
+        break;
+      }
+    }
+    newStr += str[i];
+  }
+  str = newStr;
+  return str;
+}
+removeLetter("blowtorch", "b");
+
+
+// ========================================================================================
+// Return the factorial of a number (num)
+// Given: 0 Return 1 || Given: 1 Return 1 || Given: 2 Return 2
+// Given: 3 Return 6 || Given: 4 Return 24 || Given: 5 Return 120
+function factorial(num) {
+  var product = 1;
+  for (var i=1; i <= num; i++){
+    if (num === 0){
+      return 1;
+    } else {
+      product = i * product;
+    }
+  }
+  return product;
+}
+
+console.log(factorial(0),factorial(1),factorial(2),factorial(3),factorial(4),factorial(5),factorial(6));
+
+// ========================================================================================
+// Given a string, returns whether the sequence of various brackets within it are valid. For example:
+// Given: "[] [] [ [] [] ]" or "[]" Return: true
+// Given: "[][]]" or "[][[[]]" Return: false
+function isBracketValid(str) {
+  var openBracket = 0;
+  var closeBracket = 0;
+  for(var i = 0; i < str.length; i++){
+    if(str[i]==="["){
+      openBracket ++
+    } else if (str[i]==="]"){
+      closeBracket ++
+    }
+    if(closeBracket > openBracket){
+      return false;
+    }
+  }
+  if(openBracket !== closeBracket){
+    return false;
+  } else {
+    return true;
+  }
+}
+console.log(isBracketValid("[] [] [ [] [] ]")+" should be TRUE");
+console.log(isBracketValid("[]")+" should be TRUE");
+console.log(isBracketValid("[][]]")+" should be FALSE");
+console.log(isBracketValid("[][[[]]")+" should be FALSE");
+
+// ========================================================================================
+// Given a string, return a boolean whether the string is a strict palindrome.
+// Given "a x a" or "racecar" Return: true
+// Do not ignore spaces, punctuation and capitalization: if given "Dud" or "oho!", return false.
+function isPalindromeStrict(str) {
+  var x = str.length-1;
+  for (var i = 0;i<str.length;i++){
+    if(str[i] !== str[x-i]){
+      return false;
+    }
+  }
+  return true;
+}
+console.log(isPalindromeStrict('a x a')+" --- sholud be TRUE");
+console.log(isPalindromeStrict('racecar')+" --- sholud be TRUE");
+console.log(isPalindromeStrict('Dud')+" --- sholud be FALSE");
+console.log(isPalindromeStrict('oho!')+" --- sholud be FALSE");
+
+// ========================================================================================
+// Given an array (arr), index (idx), and additional value (val), insert the value into the array at the given index. Do this without using built-in array methods. Return the modified or new array.
+function insertAt(arr, idx, val) {
+  var temp;
+  for (var i = arr.length; idx <= i; i--){
+    arr[i] = arr[i-1];
+    if(i === idx){
+      arr[i] = val;
+    }
+  }
+  console.log(arr);
+}
+insertAt([1,2,3,4,5], 3, 1000);
+
+// ========================================================================================
+// Given an array (arr) and an index (idx), remove the value from the array, this should shorten the length of the array. Do this without using any built-in array methods except pop().
+function removeAt(arr, idx) {
+  if(idx > arr.length -1){
+    return arr;
+  }
+  for (var i = idx; i < arr.length -1; i++){
+    arr[i] = arr[i+1]
+  }
+  arr.pop();
+  return arr;
+}
+removeAt([2,4,6,8], 2);
+
+
+// ========================================================================================
+// Convert the given hash's keys to values and values to corresponding keys.
+// Given: {a:1,b:2}, return: {1:a,2:b}.
+function invertHash(hash) {
+  var newHash = {};
+  for (var key in hash){
+    newHash[hash[key]] = key;
+  }
+  return newHash;
+}
+
+console.log(invertHash({a:1,b:2}));
+
+
+// ========================================================================================
+// Given the head 'node' of a Singly Linked List, pop off the last node and return the head node (if applicable).
+var node1 = {val: 1, next: node2};
+var node2 = {val: 2, next: node3};
+var node3 = {val: 3, next: node4};
+var node4 = {val: 4, next: node5};
+var node5 = {val: 5, next: node6};
+var node6 = {val: 6, next: node7};
+var node7 = {val: 7, next: null};
+
+var list = {head: node1};
+
+function removeLastSLNode(node) {
+
+  if(node.next === null){
+    list.head = null;
+    console.log("head had no next, so deleted head so list is empty and returning false");
+  	console.log(list);
+  	return false;
+  }
+  var current = node;
+  while (current){
+    if (!current.next.next){
+      current.next = null;
+    }
+    current = current.next;
+  }
+  return node;
+}
+removeLastSLNode(node1);
+
+// ========================================================================================
+// Given the head 'node' of a Singly Linked List, find the node with the val given and remove it.
+var node1 = {val: 1, next: node2};
+var node2 = {val: 2, next: node3};
+var node3 = {val: 3, next: node4};
+var node4 = {val: 4, next: node5};
+var node5 = {val: 5, next: node6};
+var node6 = {val: 6, next: node7};
+var node7 = {val: 7, next: null};
+
+var list = {head: node1};
+
+function removeSLNodeByVal(node, val) {
+  var current = node;
+  if(current.val === val){
+    list.head = current.next;
+  }
+  while(current.next){
+    if(current.next.val === val){
+      if(current.next.next === null){
+        current.next = null;
+      }
+      var temp = current.next;
+      current.next = current.next.next;
+      temp.next = null;
+    }
+    current = current.next;
+  }
+  return list;
+}
+
+removeSLNodeByVal(node1, 3);
+
+// ========================================================================================
+// Given the head 'node' of a Doubly Linked List, pop off the last node and return the head node (if applicable).
+var node1 = {val: 1, next: node2, prev: null};
+var node2 = {val: 2, next: node3, prev: node1};
+var node3 = {val: 3, next: node4, prev: node2};
+var node4 = {val: 4, next: node5, prev: node3};
+var node5 = {val: 5, next: node6, prev: node4};
+var node6 = {val: 6, next: node7, prev: node5};
+var node7 = {val: 7, next: null, prev: node6};
+
+var list = {head: node1, tail: node7};
+
+function removeLastDLNode(node) {
+  if(node.next === null){
+    list.head = null;
+    console.log("head had no next, so deleted head so list is empty and returning false");
+  	console.log(list);
+  	return false;
+  }
+  var current = node;
+  var before = current.prev;
+  while (current.next){
+    if (current.next === null){
+      before.next = null;
+    }
+    current = current.next;
+  }
+  return list;
+}
+
+removeLastDLNode(node1)
+
+// ========================================================================================
+// Given the head 'node' of a Doubly Linked List, find the node with the val given and remove it.
+var node1 = {val: 1, next: node2, prev: null};
+var node2 = {val: 2, next: node3, prev: node1};
+var node3 = {val: 3, next: node4, prev: node2};
+var node4 = {val: 4, next: node5, prev: node3};
+var node5 = {val: 5, next: node6, prev: node4};
+var node6 = {val: 6, next: node7, prev: node5};
+var node7 = {val: 7, next: null, prev: node6};
+
+var list = {head: node1, tail: node7};
+
+function removeDLNodeByVal(node, val) {
+  var current = node;
+  if(current.val === val){
+    list.head = current.next;
+  }
+
+  while(current.next){
+    if(current.next.val === val){
+      if(current.next.next === null){
+        current.next = null;
+        break;
+      }
+      var now = current.next;
+      var before = current;
+      var next = now.next;
+      before.next = next;
+      next.prev= before;
+    }
+    current = current.next;
+  }
+  return list;
+}
+
+removeDLNodeByVal(node1, 3);
+
+
+
+// BONUS (Extra Credit)
+
+// ========================================================================================
+// Given an array (arr), shift the array values by num.
+// Given: arr: [1,2,3,4,5], num: 1, Return: [5,1,2,3,4]
+// Given: arr: [1,2,3,4,5], num: 3, Return: [3,4,5,1,2]
+function shiftValuesByNum(arr, num) {
+
+}
+
+
+// ========================================================================================
+// Given a string, returns whether the sequence of various different kind of brackets within it are valid. For example:
+// Given: "[( {} {} )] [] ({})" Return: true
+// Given: "} () [] ({})) {" Return: false
+function isAllBracketValid(str) {
+  var openParens = 0;
+  var closeParens = 0;
+  var openBrack = 0;
+  var closeBrack = 0;
+  var openBrace = 0;
+  var closeBrace = 0;
+  for(var i = 0; i < str.length; i++){
+    if(str[i] === "("){
+      openParens ++;
+    } else if (str[i] === ")"){
+      closeParens ++;
+    }
+    if(str[i] === "["){
+      openBrack ++;
+    } else if(str[i] === "]"){
+      closeBrack ++;
+    }
+    if(str[i] === "{"){
+      openBrace ++;
+    } else if(str[i] === "}"){
+      closeBrace ++;
+    }
+
+    if(closeParens > openParens || closeBrack > openBrack || closeBrace > openBrace){
+      return false;
+    }
+  }
+
+  if ( openParens != closeParens || openBrack != closeBrack || openBrace != closeBrace){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+console.log(isAllBracketValid("[( {} {} )] [] ({})" + " --- should be TRUE"));
+console.log(isAllBracketValid("} () [] ({})) {" + " --- should be FALSE"));
+
+</script>

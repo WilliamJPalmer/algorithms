@@ -47,6 +47,7 @@ function prepend(list, addVal, findVal){
           after.prev = insertNode;
           insertNode.next= after;
           list.head = insertNode;
+          return newList;
         } else {
           var before = current.prev;
           var after = current;
@@ -61,8 +62,9 @@ function prepend(list, addVal, findVal){
       current = current.next;
     };
   };
+  console.log("Mark value not found");
   return false;
 };
 
-prepend(newList, 9, 67);
-prepend(newList, 200, 13);
+// prepend(newList, 9, 67);
+prepend(newList, 200, 45);
