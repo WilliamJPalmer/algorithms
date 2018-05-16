@@ -1,0 +1,321 @@
+
+//==========================================
+//================= MONDAY =================
+//==========================================
+function SLNode (val){
+  this.val = val;
+  this.next = null;
+}
+function SLQueue(){
+  var head = null;
+  var tail = null;
+}
+//=============== SLQueue: Enqueue ===============
+/*
+Create SLQueue method enqueue(val) to add the given
+value to end of our queue. Remember, SLQueue uses
+a singly linked list (not an array).
+*/
+function enqueue(val){
+  var newNode = new SLNode;
+  if(!this.head){
+    this.head = newNode;
+    this.tail = newNode;
+  }
+  this.tail.next = newNode;
+  this.tail = newNode;
+}
+enqueue(6);
+
+//=============== SLQueue: Front ===============
+/*
+Create SLQueue method front() to return the value
+at front of our queue, without removing it.
+*/
+function front(val){
+  if(!this.head){
+  return null;
+  }
+  return this.head.val;
+}
+popFront();
+
+//=============== SLQueue: Dequeue ===============
+/*
+Create SLQueue method dequeue() to remove and
+return value at front of queue. Remember, SLQueue
+uses singly linked list (not array).
+
+*/
+function dequeue(){
+  if(!this.head){
+  return false;
+  }
+  if(this.head === this.tail){
+    this.head = null;
+    this.tail = null;
+  } else {
+    this.head = this.head.next;
+  }
+  return this;
+dequeue();
+//=============== SLQueue: Contains ===============
+/*
+Create method contains(val) to return whether
+given value is found within our queue.
+*/
+function contains(val){
+  if(!this.head){
+    return false;
+  }
+  var current = this.head;
+  while (current.next){
+    if (current.val === val){
+    return true;
+    }
+    current = current.next;
+  }
+  return false;
+}
+contains(3);
+
+//=============== SLQueue: Is Empty ===============
+/*
+Create SLQueue method isEmpty() that returns whether
+our queue contains no values.
+*/
+function isEmpty(){
+if (!this.head){
+  return true;
+  }
+  else {
+  return false;
+  }
+}
+isEmpty();
+
+//=============== SLQueue: Size ===============
+/*
+funciton qSize(){
+  if(!this.head){
+    console.log("the queue has no head.");
+    return
+  }
+  var size = 0;
+  var current = this.head;
+  while(current){
+    size++;
+    current = current.next
+  }
+  console.log("the size of the Queue is:  " + size);
+  return size;
+}
+
+//=============== SLQueue: Compare Queues ===============
+/*
+Given two SLQueue objects, create a standalone function that
+returns whether they are equal. Queues are equal only if they
+have equal elements in identical order. Allocate no other object,
+and return the queues in their original condition upon exit.
+*/
+function compareQueues(queue1, queue2){
+  if(!queue1.head || !queue2.head){
+    return false;
+  }
+  var current1 = queue1.head;
+  var current2 = queue2.head;
+  while(current1 && current2){
+    if(current1 !== current2){
+    return false;
+    }
+    current1 = current1.next;
+    current2 = current2.next;
+  }
+  return true;
+}
+compareQueues(queue1, queue2);
+
+//=============== SLQueue: Remove Minimums ===============
+/*
+Create a standalone function to remove an SLQueue’s lowest value,
+otherwise leaving values in the same sequence. Use only local variables;
+allocate no other objects. Remove all duplicates of this value.
+*/
+function removeMins(queue){
+  if(!this.head){
+    return "queue has no head";
+  }
+  var min = this.head.val;
+  var current = this.head;
+  while(current.next){
+    if(current.next.val < min){
+      min = current.next.val;
+    }
+    current = current.next;
+  }
+  current = this.head;
+  while(current){
+    if (current.val === min){
+      var temp = current.next;
+      current.next = temp.next
+    }
+    current = current.next;
+  }
+}
+removeMins();
+
+//=============== SLQueue: Interleave Queue ===============
+/*
+Reorder SLQueue values to alternate first half values with
+second half values, in order. For example: (1,2,3,4,5) becomes
+(1,4,2,5,3). You may create one additional SLQueue, if needed.
+*/
+function interleave(queue){
+  var current = this.head;
+  var size =0;
+  while (current){
+    size ++;
+    current = current.next;
+  }
+  var midPostion = Math.ceil(sizze/2);
+  var list2 = this.head;
+  while(midPosition--){
+    list2 = list2.next;
+  }
+  midPostion = Math.ceil(size/2);
+  list1 = this.head;
+  var count = 0;
+  while(count < midPostion +1){
+    count++;
+    var temp1 = list1.next;
+    list1.next = list2;
+    var temp2 = list2.next;
+    list2.next = temp1;
+    list1 = temp1;
+    list2 = temp2;
+  }
+}
+
+interleave();
+
+//=============== SLStack: Push ===============
+/*
+Create push(val) that adds val to our stack.
+*/
+function push(val){
+  var newNode = new SLNode(val);
+  if(!this.top){
+    this.top = newNode;
+  } else {
+    newNode.down = this.top;
+  }
+  this.top = newNode;
+  return this;
+}
+
+push(8);
+
+//=============== SLStack: Is Empty ===============
+/*
+Return whether the stack is empty.
+*/
+function isEmpty(){
+  if(!this.top){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+isEmpty();
+
+//=============== SLStack: Pop ===============
+/*
+Create pop() to remove and return the top val.
+*/
+function pop(){
+  if(!this.top){
+    return null;
+  }
+  var temp = this.top;
+  this.top = this.top.down;
+  return temp;
+}
+
+pop();
+
+//=============== SLStack: Contains ===============
+/*
+Return whether given val is within the stack.
+*/
+function contains(val){
+  if(!this.top){
+    return false;
+  }
+  var current = this.top;
+  while (current){
+    if(current.val === val){
+      return true;
+    }
+    current = current.next;
+  }
+  return false;
+}
+contains(5);
+
+//=============== SLStack: Size ===============
+/*
+Return the number of stacked values.
+*/
+function size(){
+  var size = 0;
+  if(!this.top){
+    return size;
+  } else {
+    var current = this.top;
+    while (current){
+      size ++;
+      current = current.down;
+    }
+    return size;
+  }
+
+}
+size();
+
+//=============== SLStack: Compare Stacks	 ===============
+/*
+Given two Stack objects, create a standalone function to return
+whether they are equal. Stacks are equal only if they have equal
+elements in identical order. You can use an additional third Stack
+for storage; you will need it because you must return the given
+Stacks to their original condition upon exit.
+*/
+function compareStacks(){
+
+}
+
+compareStacks();
+
+//=============== SLStack: Copy	 ===============
+/*
+Given a Stack, create a new second Stack and copy
+values from first Stack into second Stack, so they
+pop in same order. Use only one Queue for additional
+storage, and only public Stack/Queue interfaces.
+*/
+function stackCopy(){
+
+}
+
+stackCopy();
+
+//=============== SLStack: Queue from Stacks	 ===============
+/*
+Using only two Stack objects for the underlying data storage, recreate a Queue class
+*/
+function queueFromStacks(){
+
+}
+
+queueFromStacks();

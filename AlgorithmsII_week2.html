@@ -1,0 +1,140 @@
+<script>
+
+//============== RECURSION ================
+//=========================================
+//================= MONDAY ================
+//=========================================
+
+//================= rSigma ================
+function rSigma(num){
+  if (num === 1 || num === 0){
+    return num;
+  } else if (num < 0){
+    return 0;
+  } else {
+    return rSigma(num - 1) + num;
+  }
+}
+
+console.log(rSigma(5));
+
+//========= Recursive Factorial ==========
+function rFactorial(num){
+  Math.floor(num);
+  if(num === 0 || num ===1 || num < 0){
+    return 1
+  } else {
+    return rFactorial(num-1) * num;
+  }
+}
+console.log(rFactorial(5));
+
+//============= FLOOD FILL =============
+function floodFill(canvas2D, startXY, newColor){
+  var x = startXY[0];
+  var y = startXY[1];
+  var mark = canvas2D[y][x];
+  fill(x,y);
+  function fill(x,y){
+    if(canvas2D[y][x] !== mark){
+      return;
+    }
+    canvas2D[y][x] = newColor;
+    if(y-1 >= 0) {
+      fill(x,y-1);
+    }
+    // to check diagonals and not just up,down,left,right
+    // if(y-1 >=0 && x-1 >= 0){
+    //   fill(x-1, y-1);
+    // }
+
+    if(y+1 < canvas2D.length){
+      fill(x, y+1);
+    }
+    // to check diagonals and not just up,down,left,right
+    // if(y+1 < canvas2D.length && x+1 < canvas2D[y].length){
+    //   fill(x+1, y+1);
+    // }
+
+    if(x-1 >= 0){
+      fill(x-1,y);
+    }
+    if(x+1 < canvas2D[y].length){
+      fill(x+1,y);
+    }
+  }
+}
+
+matrix = [
+  [5,2,3,4,3],
+  [5,5,3,4,0],
+  [7,5,3,5,3,5],
+  [6,5,5,4,5],
+  [1,2,5,5,5]
+];
+console.log(matrix);
+console.log(floodFill(matrix, [2,3], "A"));
+
+//============= FIBONACCI =============
+function rFibonacci(num){
+    // Given num, return the Fibonacci value of num.
+    // Use recursion to solve this algorithm.
+    if(num == 0 || num == 1){
+      return num;
+    } else if (num < 0){
+      return 0;
+    } else {
+      return rFibonacci(num - 1) + rFibonacci(num - 2);
+    }
+}
+rFibonacci(4);
+
+//============= TRIBONACCI =============
+function rTribonnaci(num){
+    // Given num, return the Tribonacci value of num.
+    // Use recursion to solve this algorithm.
+    if(num == 0 || num == 1 || num ==2){
+      return num;
+    } else if (num < 0){
+      return 0;
+    } else {
+      return rTribonnaci(num - 1) + rTribonnaci(num - 2) + rTribonnaci(num-3);
+    }
+}
+rFibonacci(4);
+
+//========= RECURSIVE BINARY SEARCH =========
+function rBinarySearch(arr,num){
+
+}
+
+//=========== GREATEST COMMON FACTOR =========
+function rGCF(a,b){
+  if(a==b){
+    return a;
+  }
+  else if(a>b){
+    if(a % b == 0){
+      return b;
+      if (a % b != 0){
+        a = a % b;
+      }
+    } else {
+      a = a-b;
+    }
+  }
+  else if (b > a){
+    if (b % a ==0){
+      return a;
+      if ( b % a != 0){
+        b = b % a;
+      }
+    }else {
+      b = b-a;
+    }
+  }
+  return rGCF(a,b);
+}
+
+console.log(rGCF(81,108));
+</script>
