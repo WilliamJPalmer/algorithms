@@ -58,23 +58,53 @@
 //##################################
 //---------Selection Sort ----------
 //##################################
-// function selectionSort(arr){
-//   var temp = 0;
-//   for (var i = 0; i <arr.length; i++){
-//     var min = i;
-//     for (var j = i+1; j < arr.length; j++){
-//       if (arr[j] < arr[min]){
-//         min = j;
-//       }
-//     }
-//     temp = arr[min];
-//     arr[min] = arr[i];
-//     arr[i] = temp;
-//   }
-//   return arr;
-// }
-// selectionSort([3,2,52353,6,4,15,899,5,222]);
-// console.log(selectionSort([3,2,52353,6,4,15,899,5,222]));
+function selectionSort(arr){
+  var temp = 0;
+  for (var i = 0; i <arr.length; i++){
+    var min = i;
+    for (var j = i+1; j < arr.length; j++){
+      if (arr[j] < arr[min]){
+        min = j;
+      }
+    }
+    temp = arr[min];
+    arr[min] = arr[i];
+    arr[i] = temp;
+    console.log(arr);
+  }
+  return arr;
+}
+selectionSort([3,2,52353,6,4,15,899,5,222]);
+console.log(selectionSort([3,2,52353,6,4,15,899,5,222]));
+
+//##################################
+//---------Selection Sort ----------
+//##################################
+function selectionSort(arr){
+  var temp;
+  for(var i = 0; i < arr.length; i++){
+    var initMin = i;
+    var newMin = 0;
+    console.log("initMin: "+initMin+", newMin: "+newMin);
+    console.log("Starting Array: "+arr);
+    for(var j = i+1; j < arr.length; j++){
+      if(arr[j] < arr[initMin]){
+        newMin = j;
+        // initMin = j;
+        console.log("initMin: -- " + initMin + ", arr[j]: "+arr[j]+", newMin: "+newMin);
+      }
+      var temp = arr[initMin];
+      arr[initMin] = arr[newMin];
+      arr[newMin] = temp;
+      console.log("temp: "+temp+", arr[i]: "+arr[i]+", initMin: "+initMin);
+      console.log("After array Changes: "+arr);
+    }
+  }
+  return arr;
+}
+console.log(selectionSort([5,2,7,1,3,9]));
+selectionSort([5,2,7,1,3,9]);
+
 
 //##################################
 //---------Insert Sort ----------
