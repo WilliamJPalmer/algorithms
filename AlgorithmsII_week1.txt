@@ -32,13 +32,13 @@ enqueue(6);
 Create SLQueue method front() to return the value
 at front of our queue, without removing it.
 */
-function front(val){
+function frontQ(){
   if(!this.head){
   return null;
   }
   return this.head.val;
 }
-popFront();
+frontQ();
 
 //=============== SLQueue: Dequeue ===============
 /*
@@ -58,6 +58,7 @@ function dequeue(){
     this.head = this.head.next;
   }
   return this;
+}
 dequeue();
 //=============== SLQueue: Contains ===============
 /*
